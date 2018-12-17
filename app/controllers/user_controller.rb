@@ -7,11 +7,18 @@ class UserController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       flash[:notice] = 'User Created! Congratz breh'
-      render index_user_path
+
+      login_user(@user)
+      redirect_to root_path
     else
       flash[:notice] = "#{@user.errors.full_messages}"
+
       render new_user_path
     end
+  end
+
+  def show
+    @user = User.find(params[:id])
   end
 
   private

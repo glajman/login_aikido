@@ -1,5 +1,15 @@
+<% if flash[:notice] %>
+  <div class="notice"><%= flash[:notice] %></div>
+<% end %>
+
 <h1> List of users </h1>
 <% User.all.each do |u| %>
   <%= "#{u.name}, #{u.email}" %>
   <br>
 <% end %>
+
+<%= link_to "Login User",  login_path %>
+<%= link_to "Create User", new_user_path %>
+<br><br>
+
+<%= "Current User: #{current_user.name}" %><%= link_to "Log out user", logout_path, method: :post %>
