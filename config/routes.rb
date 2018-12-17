@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root 'user#index'
+  
   resources :user
 
   get 'login', to: 'session#login'

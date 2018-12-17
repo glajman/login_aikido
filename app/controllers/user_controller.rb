@@ -7,7 +7,7 @@ class UserController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       flash[:notice] = 'User Created! Congratz breh'
-      render new_user_path
+      render index_user_path
     else
       flash[:notice] = "#{@user.errors.full_messages}"
       render new_user_path
