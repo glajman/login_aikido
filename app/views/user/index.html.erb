@@ -7,9 +7,13 @@
   <%= "#{u.name}, #{u.email}" %>
   <br>
 <% end %>
-
-<%= link_to "Login User",  login_path %>
-<%= link_to "Create User", new_user_path %>
-<br><br>
-
-<%= "Current User: #{current_user.name}" %><%= link_to "Log out user", logout_path, method: :post %>
+<br>
+<% if current_user.present? %>
+  <%= "Current User: #{current_user.name}" %>
+  <br>
+  <%= link_to "Profile", user_path(current_user) %>
+  <%= link_to "Log out", logout_path, method: :post %>
+<% else %>
+  <%= link_to "Login",  login_path %>
+  <%= link_to "Create User", new_user_path %>
+<% end %>
